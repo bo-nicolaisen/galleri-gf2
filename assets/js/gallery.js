@@ -1,55 +1,12 @@
-// Din cool code here
+const bigImage = document.getElementById('imageBig');
+const smallImage = document.getElementById('imageSmall');
 
-const myImages = ['elephant.jpg', 'great-white.jpg', 'koala.jpg', 'smithi.jpg', 'tiger.jpg'];
+smallImage.addEventListener('click', (event) => {
 
-const baseUrl = 'assets/img/';
+    let myUrl = smallImage.src;
 
-const mygallery = document.getElementById('gallery');
+    smallImage.src = bigImage.src;
 
+    bigImage.src = myUrl;
 
-CreateGallery();
-
-
-
-function createCard(myUrl, mygallery) {
-
-    let myArticle = document.createElement('article');
-    myArticle.classList.add('galleryCard');
-    let myImage = document.createElement('img');
-    myImage.src = myUrl;
-
-    myImage.addEventListener('click', (event) => {
-        console.log(myUrl);
-        ShowBigCard(myUrl);
-
-    });
-    myArticle.appendChild(myImage);
-
-    return myArticle;
-
-}
-
-function ShowBigCard(myUrl) {
-    mygallery.innerHTML = '';
-    let myArticle = document.createElement('article');
-    myArticle.classList.add('detailView');
-    let myImage = document.createElement('img');
-
-    myImage.src = myUrl;
-
-    myImage.addEventListener('click', (event) => {
-        CreateGallery();
-
-    });
-    myArticle.appendChild(myImage);
-    mygallery.appendChild(myArticle);
-}
-
-function CreateGallery() {
-    mygallery.innerHTML = '';
-    myImages.forEach(animal => {
-
-        mygallery.appendChild(createCard(baseUrl + animal));
-
-    });
-}
+});
