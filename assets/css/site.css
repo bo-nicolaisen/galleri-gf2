@@ -52,54 +52,24 @@ header p {
 }
 
 .galleryCard {
-  display: block;
+  display: inline-block;
   background-color: #eeeeee;
   border: 2px solid black;
   border-radius: 10px;
-  /* min-height: 400px; */
-  width: 375px;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
 }
 
 .galleryCard img {
-  max-width: 375px;
-  max-height: 500px;
-}
-
-.galleryCard h2 {
-  padding: 2px 10px 5px 10px;
-}
-
-.galleryCard p {
-  padding: 2px 10px 20px 10px;
-}
-
-.detailView {
-  display: block;
-  position: relative;
-  background-color: #eeeeee;
-  border: 2px solid black;
-  border-radius: 10px;
-  /* min-height: 400px; */
-  width: 90%;
+  max-height: 100%;
 }
 
 .detailView img {
-  width: 100%;
-}
-
-.detailView h2 {
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 1rem;
-
-  color: white;
-  font-size: 6rem;
-}
-
-.detailView p {
-  padding: 2px 10px 20px 10px;
-  font-size: 1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-height: 80vh;
 }
 
 /*-------------------------------------------------------------------*/
