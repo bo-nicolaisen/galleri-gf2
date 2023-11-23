@@ -1,55 +1,71 @@
 // Din cool code here
 
-const myImages = ['elephant.jpg', 'great-white.jpg', 'koala.jpg', 'smithi.jpg', 'tiger.jpg'];
+const myImages = ['elephant.jpg', 'smithi.jpg', 'great-white.jpg', 'koala.jpg', 'tiger.jpg'];
 
-const baseUrl = 'assets/img/';
-
-const mygallery = document.getElementById('gallery');
+buildGallery();
 
 
-CreateGallery();
-
-
-
-function createCard(myUrl, mygallery) {
-
-    let myArticle = document.createElement('article');
-    myArticle.classList.add('galleryCard');
-    let myImage = document.createElement('img');
-    myImage.src = myUrl;
-
-    myImage.addEventListener('click', (event) => {
-        console.log(myUrl);
-        ShowBigCard(myUrl);
-
+// bygger galleri udfra min array myImages
+function buildGallery() {
+    const mygalleryElement = document.getElementById('gallery');
+    myImages.forEach(image => {
+        buildCard('assets/img/' + image, mygalleryElement)
     });
-    myArticle.appendChild(myImage);
 
-    return myArticle;
 
 }
 
-function ShowBigCard(myUrl) {
-    mygallery.innerHTML = '';
-    let myArticle = document.createElement('article');
-    myArticle.classList.add('detailView');
-    let myImage = document.createElement('img');
 
-    myImage.src = myUrl;
+
+// bygger article tag med img kræver url og parent dom element
+function buildCard(imageUrl, galleryElement) {
+
+    console.log(imageUrl, galleryElement);
+
+
+
+    const myArticle = document.createElement('article');
+
+    const myImage = document.createElement('img');
+
+    myImage.src = imageUrl;
 
     myImage.addEventListener('click', (event) => {
-        CreateGallery();
+        galleryElement.innerHTML = '';
+
+        buildBigImage(imageUrl, galleryElement);
 
     });
+
+
+
+
     myArticle.appendChild(myImage);
-    mygallery.appendChild(myArticle);
+
+    galleryElement.appendChild(myArticle);
+
+
 }
 
-function CreateGallery() {
-    mygallery.innerHTML = '';
-    myImages.forEach(animal => {
+// bygger stor article tag med img kræver url og parent dom element
+function buildBigImage(imageUrl, galleryElement) {
+    const myArticle = document.createElement('article');
 
-        mygallery.appendChild(createCard(baseUrl + animal));
+    const myImage = document.createElement('img');
+
+    myImage.src = imageUrl;
+
+    myImage.addEventListener('click', (event) => {
+        galleryElement.innerHTML = '';
+        buildGallery();
 
     });
+
+
+
+
+    myArticle.appendChild(myImage);
+
+    galleryElement.appendChild(myArticle);
+
 }
